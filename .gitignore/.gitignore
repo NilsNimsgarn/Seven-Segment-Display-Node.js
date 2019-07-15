@@ -1,0 +1,59 @@
+process.stdin.resume();
+process.stdin.setEncoding("utf-8");
+var stdin_input = "";
+process.stdin.on("data", function (input) {stdin_input += input;});
+process.stdin.on("end", function () {main(stdin_input);});
+
+function main(input)
+{
+    var lineinput = input.split("\n");
+    var testfall = lineinput[0];
+    
+    for (var x = 0; x < testfall; x++)
+    {
+        var nummer = Number(lineinput[x + 1]);
+        var anzahl = 0;
+        var ergebnis = "";
+        
+        switch (nummer)
+        {
+            case 0: case 6: case 9:
+            anzahl = 6;
+            break;
+            case 1:
+            anzahl = 2;
+            break;
+            case 2: case 3: case 5:
+            anzahl = 5;
+            break;
+            case 4:
+            anzahl = 4;
+            break;
+            case 7:
+            anzahl = 3;
+            break;
+            case 8:
+            anzahl = 7;
+            break;
+        }
+        var eins = Math.floor(anzahl / 2);
+        var rest = anzahl - 2 * eins;
+        
+        if (rest == 1)
+        {
+            ergebnis += "7";
+            for(var y = 1; y < eins; y++)
+            {
+                ergebnis += "1";
+            }
+        }
+        else
+        {
+            for(var z = 0; z < eins; z++)
+            {
+                ergebnis += "1";
+            }
+        }
+        console.log(ergebnis);
+    }
+}
